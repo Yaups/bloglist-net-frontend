@@ -27,18 +27,19 @@ const AboutMe = () => {
       <p>
         This website was originally written with React on the front-end, and
         used Express for the back-end, with MongoDB used as the choice of
-        database. A fully functioning CI/CD pipeline, using GitHub Actions,
-        triggers on every Git commit to the working repository. A full testing
-        regime is automatically carried out including unit, integration and
-        end-to-end tests. If even one test fails, the build will not succeed and
-        the deployment update will not occur.
+        database. For the original version, a fully functioning CI/CD pipeline,
+        using GitHub Actions, triggers on every Git commit to the working
+        repository. A full testing regime is automatically carried out including
+        unit, integration and end-to-end tests. If even one test fails, the
+        build will not succeed and the deployment update will not occur.
       </p>
       <br />
       <p>
         I have since ported the back-end API to ASP.NET, using C#, with the only
-        major modification being a change of database provider to SQLite. The
-        back-end API has retained the exact same functionality as before the
-        port. This new API is now hosted on Azure API apps.
+        major modification being a change of database provider to SQLite, and
+        the omission of the CI/CD pipeine. The back-end API has retained the
+        exact same functionality as before the port. This new API is now hosted
+        on Azure App Service.
       </p>
       <br />
       <p>
