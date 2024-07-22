@@ -39,13 +39,7 @@ const AboutMe = () => {
         major modification being a change of database provider to SQLite, and
         the omission of the CI/CD pipeine. The back-end API has retained the
         exact same functionality as before the port. This new API is now hosted
-        on Azure App Service.
-      </p>
-      <br />
-      <p>
-        Any blog can be upvoted by clicking on the &quot;Like blog&quot; button
-        on its individual view page. You do not need to be logged in to like a
-        blog and you can like any blog an arbitrary amount of times.
+        on Azure Container Apps.
       </p>
       <br />
       <p>
