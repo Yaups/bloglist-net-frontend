@@ -1,6 +1,7 @@
 import Togglable from './Togglable'
 import BlogForm from './BlogForm'
 import WelcomeInfo from './WelcomeInfo'
+import Loading from './Loading'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import useWindowDimensions from '../hooks/useWindowDimensions'
@@ -20,6 +21,8 @@ const BlogList = ({ showWelcomeInfo, user }) => {
 
   const { width } = useWindowDimensions()
   const containerMargin = width < 500 ? minMargin : width / marginFactor
+
+  const isLoading = !blogs || blogs.length === 0
 
   return (
     <>
@@ -41,18 +44,18 @@ const BlogList = ({ showWelcomeInfo, user }) => {
           </div>
         )}
         <hr />
-        <div className="container" style={flexContainerStyle}>
+        {isLoading && <Loading />}
+        <div className="buttons" style={flexContainerStyle}>
           {blogs
             .toSorted((a, b) => b.likes - a.likes)
             .map((blog) => (
-              <div key={blog.id} className="blog">
-                <div className="button is-link is-light is-outlined">
-                  <Link to={`/blogs/${blog.id}`}>
+              <button key={blog.id}>
+                <Link to={`/blogs/${blog.id}`}>
+                  <div style={{ fontSize: 18, margin: 8 }}>
                     {blog.title} - {blog.author}
-                  </Link>
-                </div>
-                <br />
-              </div>
+                  </div>
+                </Link>
+              </button>
             ))}
         </div>
         <hr />

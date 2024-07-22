@@ -7,6 +7,7 @@ import { postBlogComment } from '../reducers/blogsReducer'
 import useWindowDimensions from '../hooks/useWindowDimensions'
 import { v4 as uuidv4 } from 'uuid'
 import blogsService from '../services/blogs'
+import Loading from './Loading'
 
 const minMargin = 0
 const marginFactor = 10
@@ -26,6 +27,7 @@ const Blog = () => {
   const handleUpvote = () => {
     dispatch(upvoteBlog(blog.id, blog))
     dispatch(setNotification(`Blog liked: ${blog.title}`, 5, false))
+    setBlog({ ...blog, likes: blog.likes + 1 })
   }
 
   const handleDeletion = () => {
@@ -62,7 +64,19 @@ const Blog = () => {
     findAndSetBlog()
   }, [])
 
-  if (!blog) return null
+  if (!blog) {
+    return (
+      <div
+        style={{
+          marginLeft: containerMargin,
+          marginRight: containerMargin,
+          textAlign: 'center',
+        }}
+      >
+        <Loading />
+      </div>
+    )
+  }
 
   return (
     <div

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import useWindowDimensions from '../hooks/useWindowDimensions'
+import Loading from './Loading'
 
 const minMargin = 0
 const marginFactor = 80
@@ -32,6 +33,20 @@ const UsersInfo = () => {
 
     setUsersInfo([...sortedUserInfo])
   }, [users])
+
+  if (!users) {
+    return (
+      <div
+        style={{
+          marginLeft: containerMargin,
+          marginRight: containerMargin,
+          textAlign: 'center',
+        }}
+      >
+        <Loading />
+      </div>
+    )
+  }
 
   return (
     <div className="container" style={{ padding: containerMargin }}>
